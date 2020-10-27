@@ -23,6 +23,10 @@ const changeConfigPaypal = async ({
   });
 };
 
+const getCurrentAccount = (key_access) => {
+  return woo.get(`paypal-settings?key_access=${key_access}`);
+};
+
 const loginPaypal = ({ username, password }) => {
   const data = qs.stringify({
     grant_type: "client_credentials",
@@ -49,4 +53,9 @@ const getTransactions = ({ access_token, start_date, end_date }) => {
   );
 };
 
-module.exports = { changeConfigPaypal, loginPaypal, getTransactions };
+module.exports = {
+  changeConfigPaypal,
+  loginPaypal,
+  getTransactions,
+  getCurrentAccount,
+};
